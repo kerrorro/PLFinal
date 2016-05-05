@@ -49,6 +49,7 @@ def standard_env():
         'round':   round,
         'symbol?': lambda x: isinstance(x, Symbol),
         "'"   :    lambda *x: list(x),
+        'exec':    lambda x: eval(compile(x,'None','single')),
     })
     return env
 
