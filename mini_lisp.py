@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from yacc import yacc, lisp_str
 import cmd
 from yacc import yacc
 
