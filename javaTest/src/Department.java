@@ -1,5 +1,3 @@
-package javaTest;
-
 /**
  * Created by fahrankamili on 4/8/16.
  */

@@ -1,0 +1,12 @@
+(10, 'Finance', 1),
+(31, 'Sales', 1),
+(32, 'Sales', 2),
+(33, 'Sales', 3),
+(34, 'Sales',4),
+(35, 'Sales', 5),
+(41, 'Operations', 1),
+(42, 'Operations', 2),
+(43, 'Operations', 3),
+(44, 'Operations', 4),
+(45, 'Operations', 5),
+(50, 'Administration', 1)
