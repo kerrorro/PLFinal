@@ -74,6 +74,7 @@ class Procedure(object):
         return eval(self.body, Env(self.parms, args, self.env))
 
 ################ eval
+toReturn = None
 
 def eval(x, env=global_env):
     "Evaluate an expression in an environment."
@@ -145,10 +146,15 @@ def eval(x, env=global_env):
         arg = eval(x[1], env)
         print (arg)
         return(arg)
+    elif x[0] == 'exec':
+        proc = eval(x[0], env)
+        import re
+        exec(proc(re.sub(r"^'|'$", '', x[1])))
+        return toReturn
     else:                          # (proc arg...)
         proc = eval(x[0], env)
         args = [eval(exp, env) for exp in x[1:]]
-        #print("PROC:", proc, "ARGS:", args)
+        print("PROC:", proc, "ARGS:", args)
         return proc(*args)
 
 
