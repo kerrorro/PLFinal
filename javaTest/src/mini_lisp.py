@@ -37,6 +37,7 @@ def standard_env():
         'length':  len,
         'list':    lambda *x: list(x),
         'list?':   lambda x: isinstance(x,list),
+        'ListComp': lambda x:
         'map':     map,
         'max':     max,
         'min':     min,
@@ -151,6 +152,13 @@ def eval(x, env=global_env):
         import re
         exec(proc(re.sub(r"^'|'$", '', x[1])))
         return toReturn
+    elif x[0] == 'ListComp':
+        proc = eval(x[0], env)
+        args = eval(x[1:], env)
+        return proc(args)
+    elif x[0] == 'EmployeeCreation':
+        import EmployeeCreator as ec
+        return ec.emps
     else:                          # (proc arg...)
         proc = eval(x[0], env)
         args = [eval(exp, env) for exp in x[1:]]
