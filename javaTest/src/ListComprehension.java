@@ -11,7 +11,7 @@ public class ListComprehension {
         ArrayList<Employee> emp = new ArrayList<>();
         ArrayList<Department> dept = new ArrayList<>();
 
-        String path = System.getProperty("user.dir") + "/ListComprehension/src/";
+        String path = System.getProperty("user.dir") + "/";
 
         File file = new File(path + "employees.txt");
         BufferedReader br = new BufferedReader(new FileReader(file));
@@ -37,7 +37,7 @@ public class ListComprehension {
             dept.add(d);
         }
 
-        System.out.println("\nSELECT first_name, last_name, manager_id, salary FROM emp GROUP BY manager_id ORDER BY salary");
+        System.out.println("\nSELECT first_name, last_name, manager_id, salary FROM emp ORDER BY manager_id, salary");
                emp.stream()
                        .collect(Collectors.groupingBy(Employee::getManagerId))
                        .entrySet()

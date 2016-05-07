@@ -28,7 +28,7 @@
         <!-- Put everything in ${build} into the MyProject-${DSTAMP}.jar file -->
         <jar jarfile="${dist}/lib/Main-${DSTAMP}.jar" basedir="${build}">
             <manifest>
-                <attribute name="Main-Class" value="cannata.ListComprehension"/>
+                <attribute name="Main-Class" value="ListComprehension"/>
             </manifest>
         </jar>
     </target>
