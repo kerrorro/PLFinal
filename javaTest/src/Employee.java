@@ -31,6 +31,10 @@ public class Employee {
         this.manager_id = manager_id;
     }
 
+    public Employee(String[] emp){
+        this(emp[0], emp[1], emp[2], emp[3], emp[4], emp[5], emp[6], emp[7], emp[8], emp[9], emp[10]);
+    }
+
     public String getId() {
         return id;
     }

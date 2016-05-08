@@ -12,6 +12,10 @@ public class Department {
         this.region_id = region_id;
     }
 
+    public Department(String[] dept){
+        this(dept[0], dept[1], dept[2]);
+    }
+
     public String getId() {
         return id;
     }
