@@ -37,7 +37,7 @@ def standard_env():
         'length':  len,
         'list':    lambda *x: list(x),
         'list?':   lambda x: isinstance(x,list),
-        'ListComp': lambda x:
+        'ListComp': lambda emp, dept: [[department,(lambda x: round(sum(x) / len(x), 2))(map(float, [e.getSalary() for e in emp[1::] if                            department == e.getDept_id()]))] for department in sorted({d.getId() for d in dept[1::]})],
         'map':     map,
         'max':     max,
         'min':     min,
@@ -152,13 +152,12 @@ def eval(x, env=global_env):
         import re
         exec(proc(re.sub(r"^'|'$", '', x[1])))
         return toReturn
-    elif x[0] == 'ListComp':
-        proc = eval(x[0], env)
-        args = eval(x[1:], env)
-        return proc(args)
-    elif x[0] == 'EmployeeCreation':
-        import EmployeeCreator as ec
-        return ec.emps
+    elif x[0] == 'ListCreator':
+        text = x[1:][0]
+        text = text.strip("'")
+        import ListCreator
+        list = ListCreator.listCreator(text)
+        return list
     else:                          # (proc arg...)
         proc = eval(x[0], env)
         args = [eval(exp, env) for exp in x[1:]]
