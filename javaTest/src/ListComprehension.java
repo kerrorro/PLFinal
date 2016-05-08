@@ -7,8 +7,20 @@ import java.util.stream.Collectors;
 
 
 public class ListComprehension {
-    public static void run() throws IOException {
+    public static void run(Employee[] empArray, Department[] deptArray) throws IOException {
+        System.out.println("Creating arraylists");
         ArrayList<Employee> emp = new ArrayList<>();
+        ArrayList<Department> dept = new ArrayList<>();
+        for (Employee e : empArray){
+            emp.add(e);
+        }
+        for (Department d : deptArray){
+            dept.add(d);
+        }
+
+        //ArrayList<Employee> emp = new ArrayList<Employee>(Arrays.asList(emp));
+        //ArrayList<Department> dept = new ArrayList<Department>(Arrays.asList(dept));
+        /*ArrayList<Employee> emp = new ArrayList<>();
         ArrayList<Department> dept = new ArrayList<>();
 
         String path = System.getProperty("user.dir") + "/";
@@ -36,7 +48,7 @@ public class ListComprehension {
             Department d = new Department(deptList.get(0),deptList.get(1),deptList.get(2));
             dept.add(d);
         }
-
+*/
         System.out.println("\nSELECT first_name, last_name, manager_id, salary FROM emp ORDER BY manager_id, salary");
                emp.stream()
                        .collect(Collectors.groupingBy(Employee::getManagerId))

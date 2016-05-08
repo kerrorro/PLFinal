@@ -37,7 +37,8 @@ def standard_env():
         'length':  len,
         'list':    lambda *x: list(x),
         'list?':   lambda x: isinstance(x,list),
-        'ListComp': lambda emp, dept: [[department,(lambda x: round(sum(x) / len(x), 2))(map(float, [e.getSalary() for e in emp[1::] if                            department == e.getDept_id()]))] for department in sorted({d.getId() for d in dept[1::]})],
+        'ListComp': lambda emp, dept: [[department,(lambda x: round(sum(x) / len(x), 2))(map(float, [e.getSalary() for e in emp[1::]                        if department == e.getDept_id()]))] for department in sorted({d.getId() for d in dept[1::]})],
+        'StreamJava': lambda emp, dept: eval(['exec', "'import ListComprehension; ListComprehension.run(%s, %s)'" % (emp, dept)]),
         'map':     map,
         'max':     max,
         'min':     min,
@@ -150,7 +151,9 @@ def eval(x, env=global_env):
     elif x[0] == 'exec':
         proc = eval(x[0], env)
         import re
+        print("CALLING EXEC WITH", x[1])
         exec(proc(re.sub(r"^'|'$", '', x[1])))
+        print("EXEC SUCCESSFULLY EXECUTED")
         return toReturn
     elif x[0] == 'ListCreator':
         text = x[1:][0]
@@ -198,8 +201,8 @@ class MiniLisp(cmd.Cmd):     # See https://docs.python.org/2/library/cmd.html
            In that case we execute the line as Python code.
         """
         absSyntaxTree = parse(line)
-        print ("AST: ", absSyntaxTree)
-        print("Evaluated: ", eval(absSyntaxTree))
+        print "AST: ", absSyntaxTree
+        print "Evaluated: ", eval(absSyntaxTree)
 
 
 if __name__ == '__main__':
