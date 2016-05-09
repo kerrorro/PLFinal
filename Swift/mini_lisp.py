@@ -209,7 +209,7 @@ class MiniLisp(cmd.Cmd):     # See https://docs.python.org/2/library/cmd.html
         """
         absSyntaxTree = parse(line)
         print "AST: ", absSyntaxTree
-        print "Evaluated: ", eval(absSyntaxTree)
+        #print "Evaluated: ", eval(absSyntaxTree)
 
 
 if __name__ == '__main__':
