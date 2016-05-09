@@ -14,7 +14,7 @@ def p_case_item_list(p):
 def p_value(p):
     '''value : STRING
               | NUMBER'''
-    p[0] = p[1]                                 # Returns value associated with an identifier/variable name: 'string' or number
+    p[0] = p[1]                                             # Returns value associated with an identifier/variable name: 'string' or number
 
 def p_identifier(p):
     ''' identifier : TEXT "="

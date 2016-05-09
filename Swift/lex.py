@@ -7,7 +7,7 @@
 import ply.lex as lex
 
 # List of token names.   
-tokens = ('LET', 'SWITCH', 'CASE', 'TEXT', 'CASETEXT', 'NUMBER', 'STRING')
+tokens = ('LET', 'SWITCH', 'CASE', 'TEXT', 'CASETEXT', 'NUMBER', 'STRING','DEFAULT')
 literals = ['=', ':', '{', '}']
 
 # Reserved words
@@ -17,9 +17,11 @@ reserved = ['LET', 'SWITCH', 'CASE']
 t_LET = r'^let'
 t_SWITCH = r'^switch'
 t_CASE = r'case'
+t_DEFAULT = r'default'
 t_STRING = r'\'[A-Za-z0-9_]+\''
 
 def t_NUMBER(t):
+    r'[0-9]+'
     try:
         float(t)
         return t
@@ -37,9 +39,6 @@ def t_CASETEXT(t):
     r'case ([.*]+)[ ]{0,1}:'
     print "CaseText token:", t.group(1)
     return t.group(1)                   # The string between 'case' and ':' representing the variable to check for
-
-
-
 
 # Define a rule so we can track line numbers
 def t_newline(t):
