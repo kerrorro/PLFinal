@@ -7,6 +7,9 @@ import java.util.stream.Collectors;
 
 
 public class ListComprehension {
+    public static void run(String e, String d){
+        System.out.println("HELLOOOOOOO");
+    }
     public static void run(Employee[] empArray, Department[] deptArray) throws IOException {
         System.out.println("Creating arraylists");
         ArrayList<Employee> emp = new ArrayList<>();
