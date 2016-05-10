@@ -14,15 +14,16 @@ DEBUG = True
 #     ''' godly : constant-declaration switch-statement'''
 #     p[0] = [p[1],p[2]]
 
-def p_call(p):
-    '''call : program
-            | programs'''
-    p[0] = p[1]
 
 def p_programs(p):
     ''' programs : program programs
-                 | program program '''
+    '''
     p[0] = [p[1]] + p[2]
+
+def p_programs_single(p):
+    ''' programs : program
+    '''
+    p[0] = [p[1]]
 
 def p_program(p):
     '''program : switch-statement
