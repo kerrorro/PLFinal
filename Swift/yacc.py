@@ -10,15 +10,35 @@ DEBUG = True
 
 # BNF
 
-def p_godly(p):
-    ''' godly : constant-declaration switch-statement'''
-    p[0] = [p[1],p[2]]
+# def p_godly(p):
+#     ''' godly : constant-declaration switch-statement'''
+#     p[0] = [p[1],p[2]]
+
+def p_program(p):
+    '''program : switch-statement
+               | constant-declaration
+               | constant-declaration switch-statement
+               | expression'''
+    returnList = []
+    for _p in p:
+        if _p is not None:
+            returnList.append(_p)
+    p[0] = returnList
 
 def p_switch_statement(p):
     '''switch-statement : SWITCH expression "{" switch-cases "}"'''
     if DEBUG:
         print ('In switch statement', p[1:])
     # p[0] = [p[1],p[2],p[4]]
+    p[0] = p[1]
+
+def p_expression(p):
+    '''expression : numeric-literal
+                  | STRING
+                  | IDENTIFIER
+    '''
+    if DEBUG:
+        print ('In expression', p[1:])
     p[0] = p[1]
 
 def p_switch_cases(p):
@@ -82,14 +102,7 @@ def p_initializer(p):
         print ('In initializer', p[1:])
     p[0] = p[2]
 
-def p_expression(p):
-    '''expression : numeric-literal
-                  | STRING
-                  | IDENTIFIER
-    '''
-    if DEBUG:
-        print ('In expression', p[1:])
-    p[0] = p[1]
+
 
 def p_numeric_literal(p):
     '''numeric-literal : INTEGER
