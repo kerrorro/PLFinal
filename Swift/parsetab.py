@@ -5,9 +5,9 @@ _tabversion = '3.8'
 
 _lr_method = 'LALR'
 
-_lr_signature = 'AFC95972D2A9F9A3E2C18ADD11A5DFE3'
+_lr_signature = '3D4191307BBEF2880760FE6DD01EBF6A'
     
-_lr_action_items = {'$end':([2,3,5,7,8,9,10,11,13,],[0,-1,-2,-3,-7,-4,-5,-6,-8,]),'.':([11,],[12,]),'STRING':([6,],[10,]),'LET':([0,],[1,]),'IDENTIFIER':([1,],[4,]),'=':([4,],[6,]),'INTEGER':([6,12,],[11,13,]),}
+_lr_action_items = {'$end':([2,3,5,7,8,9,10,11,12,14,],[0,-1,-2,-3,-8,-4,-5,-6,-7,-9,]),'.':([12,],[13,]),'STRING':([6,],[10,]),'LET':([0,],[1,]),'IDENTIFIER':([1,6,],[4,11,]),'=':([4,],[6,]),'INTEGER':([6,13,],[12,14,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -16,7 +16,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'expression':([6,],[7,]),'floating-point-literal':([6,],[8,]),'numeric-literal':([6,],[9,]),'pattern-initializer':([1,],[3,]),'initializer':([4,],[5,]),'constant-declaration':([0,],[2,]),}
+_lr_goto_items = {'expression':([6,],[7,]),'floating-point-literal':([6,],[8,]),'numeric-literal':([6,],[9,]),'initializer':([4,],[5,]),'identifier-initializer':([1,],[3,]),'constant-declaration':([0,],[2,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -26,12 +26,25 @@ for _k, _v in _lr_goto_items.items():
 del _lr_goto_items
 _lr_productions = [
   ("S' -> constant-declaration","S'",1,None,None,None),
-  ('constant-declaration -> LET pattern-initializer','constant-declaration',2,'p_constant_declaration','yacc.py',10),
-  ('pattern-initializer -> IDENTIFIER initializer','pattern-initializer',2,'p_pattern_initializer','yacc.py',16),
-  ('initializer -> = expression','initializer',2,'p_initializer','yacc.py',22),
-  ('expression -> numeric-literal','expression',1,'p_expression','yacc.py',28),
-  ('expression -> STRING','expression',1,'p_expression','yacc.py',29),
-  ('numeric-literal -> INTEGER','numeric-literal',1,'p_numeric_literal','yacc.py',36),
-  ('numeric-literal -> floating-point-literal','numeric-literal',1,'p_numeric_literal','yacc.py',37),
-  ('floating-point-literal -> INTEGER . INTEGER','floating-point-literal',3,'p_floating_point_literal','yacc.py',45),
+  ('constant-declaration -> LET identifier-initializer','constant-declaration',2,'p_constant_declaration','yacc.py',14),
+  ('identifier-initializer -> IDENTIFIER initializer','identifier-initializer',2,'p_identifier_initializer','yacc.py',20),
+  ('initializer -> = expression','initializer',2,'p_initializer','yacc.py',26),
+  ('expression -> numeric-literal','expression',1,'p_expression','yacc.py',32),
+  ('expression -> STRING','expression',1,'p_expression','yacc.py',33),
+  ('expression -> IDENTIFIER','expression',1,'p_expression','yacc.py',34),
+  ('numeric-literal -> INTEGER','numeric-literal',1,'p_numeric_literal','yacc.py',41),
+  ('numeric-literal -> floating-point-literal','numeric-literal',1,'p_numeric_literal','yacc.py',42),
+  ('floating-point-literal -> INTEGER . INTEGER','floating-point-literal',3,'p_floating_point_literal','yacc.py',49),
+  ('switch-statement -> SWITCH expression { switch-cases }','switch-statement',5,'p_switch_statement','yacc.py',72),
+  ('switch-cases -> switch-case switch-cases','switch-cases',2,'p_switch_cases','yacc.py',77),
+  ('switch-cases -> switch-case switch-case','switch-cases',2,'p_switch_cases','yacc.py',78),
+  ('switch-cases -> switch-case','switch-cases',1,'p_switch_case_single','yacc.py',82),
+  ('switch-case -> CASE case-item-list : statement','switch-case',4,'p_switch_case','yacc.py',86),
+  ('switch-case -> DEFAULT : statement','switch-case',3,'p_switch_case','yacc.py',87),
+  ('case-item-list -> CASETEXT','case-item-list',1,'p_case_item_list','yacc.py',103),
+  ('statement -> numeric-literal + numeric-literal','statement',3,'p_arithmetic','yacc.py',115),
+  ('statement -> numeric-literal - numeric-literal','statement',3,'p_arithmetic','yacc.py',116),
+  ('statement -> numeric-literal * numeric-literal','statement',3,'p_arithmetic','yacc.py',117),
+  ('statement -> numeric-literal / numeric-literal','statement',3,'p_arithmetic','yacc.py',118),
+  ('statement -> PRINT ( expression )','statement',4,'p_print_function','yacc.py',123),
 ]
