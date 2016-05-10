@@ -4,16 +4,6 @@ import ply.yacc as yacc
 from lex import tokens
 
 DEBUG = True
-# def p_program(p):
-#     'program : constant-declaration switch-statement'
-#     p[0] = [p[1]] + [[p[2]] + [p[4]]] + [p[5]] + [p[6]] + p[8]
-
-# BNF
-
-# def p_godly(p):
-#     ''' godly : constant-declaration switch-statement'''
-#     p[0] = [p[1],p[2]]
-
 
 def p_programs(p):
     ''' programs : program programs
@@ -54,7 +44,8 @@ def p_switch_cases_base_case(p):
 
 def p_switch_case(p):
     '''switch-case : CASE case-item-list ":" statement
-                   | DEFAULT ":" statement '''
+                   | DEFAULT ":" statement
+    '''
     if DEBUG:
         print ('In switch statement', p[1:])
     if p[1] == 'case':
@@ -78,6 +69,7 @@ def p_arithmetic(p):
     '''
     p[0] = [p[2],[p[1],p[3]]]
 
+# TODO it wil have a bug in this switch x { case 5: print("Hello") case 6: print("World!") }
 def p_print_function(p):
     'statement : PRINT "(" expression ")"'
     p[0] = [p[1] ,p[3]]
