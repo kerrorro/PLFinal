@@ -20,7 +20,7 @@ def p_programs(p):
     '''
     p[0] = [p[1]] + p[2]
 
-def p_programs_single(p):
+def p_programs_base_case(p):
     ''' programs : program
     '''
     p[0] = [p[1]]
@@ -46,7 +46,7 @@ def p_switch_cases(p):
         print ('In switch-cases', p[1:])
     p[0] = [p[1]] + p[2]
 
-def p_switch_cases_end(p):
+def p_switch_cases_base_case(p):
     'switch-cases : switch-case'
     if DEBUG:
         print ('In switch-cases-end', p[1:])
@@ -121,7 +121,7 @@ def p_floating_point_literal(p):
     '''floating-point-literal : INTEGER "." INTEGER'''
     if DEBUG:
         print ('In floating_point_literal', p[1:])
-        # p[0] = str(p[1]) + p[2] + str(p[3])
+    p[0] = float(str(p[1]) + p[2] + str(p[3]))
 
 # Error rule for syntax errors
 def p_error(p):

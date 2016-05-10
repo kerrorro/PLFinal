@@ -8,7 +8,7 @@ import ply.lex as lex
 
 # List of token names.   
 tokens = ('LET', 'SWITCH', 'CASE','IDENTIFIER', 'PRINT' , 'STRING','DEFAULT','INTEGER',)
-literals = ['=', ':', '{', '}','+',',','(',')']
+literals = ['=', ':', '{', '}','+',',','(',')','.']
 
 # Reserved words
 reserved = ['LET', 'SWITCH', 'CASE','PRINT','DEFAULT']
