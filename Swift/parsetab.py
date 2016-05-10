@@ -5,9 +5,9 @@ _tabversion = '3.8'
 
 _lr_method = 'LALR'
 
-_lr_signature = '3D4191307BBEF2880760FE6DD01EBF6A'
+_lr_signature = 'C9F4F46F33BE569F0150F5B85E8194AB'
     
-_lr_action_items = {'$end':([2,3,5,7,8,9,10,11,12,14,],[0,-1,-2,-3,-8,-4,-5,-6,-7,-9,]),'.':([12,],[13,]),'STRING':([6,],[10,]),'LET':([0,],[1,]),'IDENTIFIER':([1,6,],[4,11,]),'=':([4,],[6,]),'INTEGER':([6,13,],[12,14,]),}
+_lr_action_items = {'PRINT':([29,31,],[32,32,]),'$end':([1,6,26,],[0,-1,-2,]),'(':([32,],[37,]),')':([11,12,13,14,15,23,42,],[-22,-18,-19,-20,-21,-23,47,]),'*':([11,15,23,33,],[-22,-21,-23,38,]),'+':([11,15,23,33,],[-22,-21,-23,39,]),',':([11,12,13,14,15,23,27,],[-22,-18,-19,-20,-21,-23,30,]),'-':([11,15,23,33,],[-22,-21,-23,40,]),'.':([15,],[18,]),'CASE':([11,15,17,19,23,24,34,36,43,44,45,46,47,],[-22,-21,21,21,-23,21,-7,-6,-12,-10,-11,-13,-14,]),'/':([11,15,23,33,],[-22,-21,-23,41,]),'STRING':([7,9,21,30,37,],[13,13,13,13,13,]),'LET':([0,],[2,]),'SWITCH':([3,4,8,11,12,13,14,15,16,23,],[7,-15,-16,-22,-18,-19,-20,-21,-17,-23,]),':':([11,12,13,14,15,22,23,27,28,35,],[-22,-18,-19,-20,-21,29,-23,-8,31,-9,]),'IDENTIFIER':([2,7,9,21,30,37,],[5,14,14,14,14,14,]),'{':([10,11,12,13,14,15,23,],[17,-22,-18,-19,-20,-21,-23,]),'=':([5,],[9,]),'}':([11,15,19,20,23,24,25,34,36,43,44,45,46,47,],[-22,-21,-5,26,-23,-4,-3,-7,-6,-12,-10,-11,-13,-14,]),'DEFAULT':([11,15,17,19,23,24,34,36,43,44,45,46,47,],[-22,-21,22,22,-23,22,-7,-6,-12,-10,-11,-13,-14,]),'INTEGER':([7,9,18,21,29,30,31,37,38,39,40,41,],[15,15,23,15,15,15,15,15,15,15,15,15,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -16,7 +16,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'expression':([6,],[7,]),'floating-point-literal':([6,],[8,]),'numeric-literal':([6,],[9,]),'initializer':([4,],[5,]),'identifier-initializer':([1,],[3,]),'constant-declaration':([0,],[2,]),}
+_lr_goto_items = {'switch-statement':([3,],[6,]),'expression':([7,9,21,30,37,],[10,16,27,27,42,]),'floating-point-literal':([7,9,21,29,30,31,37,38,39,40,41,],[11,11,11,11,11,11,11,11,11,11,11,]),'numeric-literal':([7,9,21,29,30,31,37,38,39,40,41,],[12,12,12,33,12,33,12,43,44,45,46,]),'switch-case':([17,19,24,],[19,24,24,]),'case-item-list':([21,30,],[28,35,]),'initializer':([5,],[8,]),'switch-cases':([17,19,24,],[20,25,25,]),'identifier-initializer':([2,],[4,]),'godly':([0,],[1,]),'statement':([29,31,],[34,36,]),'constant-declaration':([0,],[3,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -25,26 +25,28 @@ for _k, _v in _lr_goto_items.items():
        _lr_goto[_x][_k] = _y
 del _lr_goto_items
 _lr_productions = [
-  ("S' -> constant-declaration","S'",1,None,None,None),
-  ('constant-declaration -> LET identifier-initializer','constant-declaration',2,'p_constant_declaration','yacc.py',14),
-  ('identifier-initializer -> IDENTIFIER initializer','identifier-initializer',2,'p_identifier_initializer','yacc.py',20),
-  ('initializer -> = expression','initializer',2,'p_initializer','yacc.py',26),
-  ('expression -> numeric-literal','expression',1,'p_expression','yacc.py',32),
-  ('expression -> STRING','expression',1,'p_expression','yacc.py',33),
-  ('expression -> IDENTIFIER','expression',1,'p_expression','yacc.py',34),
-  ('numeric-literal -> INTEGER','numeric-literal',1,'p_numeric_literal','yacc.py',41),
-  ('numeric-literal -> floating-point-literal','numeric-literal',1,'p_numeric_literal','yacc.py',42),
-  ('floating-point-literal -> INTEGER . INTEGER','floating-point-literal',3,'p_floating_point_literal','yacc.py',49),
-  ('switch-statement -> SWITCH expression { switch-cases }','switch-statement',5,'p_switch_statement','yacc.py',72),
-  ('switch-cases -> switch-case switch-cases','switch-cases',2,'p_switch_cases','yacc.py',77),
-  ('switch-cases -> switch-case switch-case','switch-cases',2,'p_switch_cases','yacc.py',78),
-  ('switch-cases -> switch-case','switch-cases',1,'p_switch_case_single','yacc.py',82),
-  ('switch-case -> CASE case-item-list : statement','switch-case',4,'p_switch_case','yacc.py',86),
-  ('switch-case -> DEFAULT : statement','switch-case',3,'p_switch_case','yacc.py',87),
-  ('case-item-list -> CASETEXT','case-item-list',1,'p_case_item_list','yacc.py',103),
-  ('statement -> numeric-literal + numeric-literal','statement',3,'p_arithmetic','yacc.py',115),
-  ('statement -> numeric-literal - numeric-literal','statement',3,'p_arithmetic','yacc.py',116),
-  ('statement -> numeric-literal * numeric-literal','statement',3,'p_arithmetic','yacc.py',117),
-  ('statement -> numeric-literal / numeric-literal','statement',3,'p_arithmetic','yacc.py',118),
-  ('statement -> PRINT ( expression )','statement',4,'p_print_function','yacc.py',123),
+  ("S' -> godly","S'",1,None,None,None),
+  ('godly -> constant-declaration switch-statement','godly',2,'p_godly','yacc.py',14),
+  ('switch-statement -> SWITCH expression { switch-cases }','switch-statement',5,'p_switch_statement','yacc.py',18),
+  ('switch-cases -> switch-case switch-cases','switch-cases',2,'p_switch_cases','yacc.py',25),
+  ('switch-cases -> switch-case switch-case','switch-cases',2,'p_switch_cases','yacc.py',26),
+  ('switch-cases -> switch-case','switch-cases',1,'p_switch_case_single','yacc.py',32),
+  ('switch-case -> CASE case-item-list : statement','switch-case',4,'p_switch_case','yacc.py',38),
+  ('switch-case -> DEFAULT : statement','switch-case',3,'p_switch_case','yacc.py',39),
+  ('case-item-list -> expression','case-item-list',1,'p_case_item_list','yacc.py',48),
+  ('case-item-list -> expression , case-item-list','case-item-list',3,'p_case_item_list','yacc.py',49),
+  ('statement -> numeric-literal + numeric-literal','statement',3,'p_arithmetic','yacc.py',56),
+  ('statement -> numeric-literal - numeric-literal','statement',3,'p_arithmetic','yacc.py',57),
+  ('statement -> numeric-literal * numeric-literal','statement',3,'p_arithmetic','yacc.py',58),
+  ('statement -> numeric-literal / numeric-literal','statement',3,'p_arithmetic','yacc.py',59),
+  ('statement -> PRINT ( expression )','statement',4,'p_print_function','yacc.py',64),
+  ('constant-declaration -> LET identifier-initializer','constant-declaration',2,'p_constant_declaration','yacc.py',68),
+  ('identifier-initializer -> IDENTIFIER initializer','identifier-initializer',2,'p_identifier_initializer','yacc.py',74),
+  ('initializer -> = expression','initializer',2,'p_initializer','yacc.py',80),
+  ('expression -> numeric-literal','expression',1,'p_expression','yacc.py',86),
+  ('expression -> STRING','expression',1,'p_expression','yacc.py',87),
+  ('expression -> IDENTIFIER','expression',1,'p_expression','yacc.py',88),
+  ('numeric-literal -> INTEGER','numeric-literal',1,'p_numeric_literal','yacc.py',95),
+  ('numeric-literal -> floating-point-literal','numeric-literal',1,'p_numeric_literal','yacc.py',96),
+  ('floating-point-literal -> INTEGER . INTEGER','floating-point-literal',3,'p_floating_point_literal','yacc.py',103),
 ]
