@@ -11,12 +11,11 @@ tokens = ('LET', 'SWITCH', 'CASE','IDENTIFIER', 'PRINT' , 'STRING','DEFAULT','IN
 literals = ['=', ':', '{', '}','+',',','(',')']
 
 # Reserved words
-reserved = ['LET', 'SWITCH', 'CASE','PRINT']
+reserved = ['LET', 'SWITCH', 'CASE','PRINT','DEFAULT']
 
 # Regular expression rules for simple tokens
 # t_SWITCH = r'switch'
-t_DEFAULT = r'default'
-t_STRING = r'\"[A-Za-z0-9_]*\"'
+t_STRING = r'\".*\"'
 t_INTEGER = r'[0-9]+'
 
 def t_IDENTIFIER(t):
