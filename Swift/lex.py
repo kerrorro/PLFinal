@@ -9,17 +9,18 @@ import ply.lex as lex
 DEBUG = False
 
 # List of token names.   
-tokens = ('LET', 'SWITCH', 'CASE','PRINT' , 'DEFAULT',
-          'IDENTIFIER', 'STRING', 'INVALIDSTRING' ,'INTEGER')
+tokens = ('LET', 'SWITCH', 'CASE','PRINT' , 'DEFAULT','STRING',
+          'IDENTIFIER', 'QUOTEDTEXT', 'INVALIDQUOTEDTEXT' ,'INTEGER')
 literals = ['=', ':', '{', '}','+',',','(',')','.','/','*','-']
 
 # Reserved words
-reserved = ['LET', 'SWITCH', 'CASE','PRINT','DEFAULT']
+reserved = ['LET', 'SWITCH', 'CASE','PRINT','DEFAULT','STRING']
 
 # Regular expression rules for simple tokens
-t_INVALIDSTRING = r'\'.*?\''
-t_STRING = r'\".*?\"'
+t_INVALIDQUOTEDTEXT = r'\'.*?\''
+t_QUOTEDTEXT = r'\".*?\"'
 t_INTEGER = r'[0-9]+'
+t_STRING = r'String'
 
 def t_IDENTIFIER(t):
     r'[A-Za-z_][A-Za-z0-9_]*'

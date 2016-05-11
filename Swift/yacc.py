@@ -3,7 +3,7 @@ import ply.yacc as yacc
 # Get the token map from the lexer.  This is required.
 from lex import tokens
 
-DEBUG = False
+DEBUG = True
 
 def p_programs(p):
     ''' programs : program programs
@@ -75,10 +75,10 @@ def p_case_item_list(p):
         p[0] = [p[1]] + p[3]
 
 def p_arithmetic(p):
-    ''' expression : numeric-literal "+" numeric-literal
-                    | numeric-literal "-" numeric-literal
-                    | numeric-literal "*" numeric-literal
-                    | numeric-literal "/" numeric-literal
+    ''' expression : expression "+" expression
+                    | expression "-" expression
+                    | expression "*" expression
+                    | expression "/" expression
     '''
     p[0] = [p[2],p[1],p[3]]
 
@@ -92,6 +92,12 @@ def p_statements_base_case(p):
 
 def p_print_function(p):
     'statement : PRINT "(" expression ")"'
+    p[0] = [p[1] ,p[3]]
+
+def p_string_function(p):
+    'statement : STRING "(" expression ")"'
+    if DEBUG:
+        print ('In string_function',p)
     p[0] = [p[1] ,p[3]]
 
 def p_constant_declaration_statement(p):
@@ -118,8 +124,9 @@ def p_initializer(p):
 
 def p_expression(p):
     '''expression : numeric-literal
-                  | STRING
+                  | QUOTEDTEXT
                   | IDENTIFIER
+                  | statement
     '''
     if DEBUG:
         print ('In expression', p[1:])
@@ -142,10 +149,10 @@ def p_floating_point_literal(p):
         print ('In floating_point_literal', p[1:])
     p[0] = float(str(p[1]) + p[2] + str(p[3]))
 
-def p_invalid_string(p):
-    'invalid : INVALIDSTRING'
+def p_invalid_quoted_text(p):
+    'invalid : INVALIDQUOTEDTEXT'
     if DEBUG:
-        print('In invalid_string', )
+        print('In invalid_quoted_text', )
     print "Swift strings use double quotes."
     raise SyntaxError
     pass

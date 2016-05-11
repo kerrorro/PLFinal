@@ -88,4 +88,4 @@ switch vegetable
 }
 
 TODO what to put in command line
-let vegetable = "red pepper" switch vegetable { case "celery": print("Add some raisins and make ants on a log.") case "cucumber", "watercress": let people = 5 print("That would make a good tea sandwich.") case "red pepper": print("Is it a spicy?") default: print("Everything tastes good in soup.")}
+let vegetable = "default" switch vegetable { case "celery": print("Add some raisins and make ants on a log.") case "cucumber", "watercress": let people = 5 print("That would make a good tea sandwich.") case "red pepper": print("Is it a spicy?") default: print("Everything tastes good in soup.")}

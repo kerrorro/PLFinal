@@ -12,7 +12,7 @@ Symbol = str          # A Lisp Symbol is implemented as a Python str
 List   = list         # A Lisp List is implemented as a Python list
 Number = (int, float) # A Lisp Number is implemented as a Python int or float
 
-DEBUG = False
+DEBUG = True
 
 def standard_env():
     "An environment with some Scheme standard procedures."
@@ -91,6 +91,8 @@ def eval(x, env=global_env):
         arg = eval(x[1], env)
         print (arg)
         return(arg)
+    elif x[0] == 'String':
+        return str(eval(x[1]))
     elif x[0] == 'switch':
         identifier = eval(x[1])
         case_item_lists = x[2]
@@ -105,6 +107,8 @@ def eval(x, env=global_env):
                 print ('In switch, case_label = ', case_label)
 
             statements = case_item_list[1]
+            if DEBUG:
+                print ('In switch, statements = ', statements)
             if identifier in case_label:
                 for statement in statements:
                     eval(statement)
