@@ -56,7 +56,7 @@ def p_switch_case(p):
         p[0] = [p[2]] + [p[4]]                              # [['C1', 'C2'], statement]
 
 def p_default(p):
-    'default : DEFAULT ":" statement'
+    'default : DEFAULT ":" statements'
     if DEBUG:
         print('In default:', [[p[1]],p[3]])
     p[0] = [[p[1]],p[3]]                                    # [['Default'], statements] [['Default'], statements]
