@@ -67,10 +67,15 @@ def p_switch_case(p):
 def p_case_item_list(p):
     '''case-item-list : expression
                       | expression "," case-item-list '''
+
     if len(p) == 2:
+        if DEBUG:
+            print ('In case_item_list', [p[1]])
         p[0] = [p[1]]
     else:
-        p[0] = [p[1],p[3]]
+        if DEBUG:
+            print ('In case_item_list', [p[1]] + p[3])
+        p[0] = [p[1]] + p[3]
 
 def p_arithmetic(p):
     ''' expression : numeric-literal "+" numeric-literal
