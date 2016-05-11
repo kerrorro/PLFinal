@@ -32,8 +32,8 @@ def p_program(p):
 def p_switch_statement(p):
     '''switch-statement : SWITCH expression "{" switch-cases default "}"'''
     if DEBUG:
-        print ('In switch statement', [p[1],p[2],p[4]])
-    p[0] = [p[1],p[2],p[4]]
+        print ('In switch statement', [p[1],p[2],p[4],p[5]])
+    p[0] = [p[1],p[2],p[4],p[5]]
 
 def p_switch_cases(p):
     '''switch-cases : switch-case switch-cases
@@ -125,6 +125,15 @@ def p_floating_point_literal(p):
     if DEBUG:
         print ('In floating_point_literal', p[1:])
     p[0] = float(str(p[1]) + p[2] + str(p[3]))
+
+def p_invalid_string(p):
+    'invalid : INVALIDSTRING'
+    if DEBUG:
+        print('In invalid_string', )
+    print "Swift strings use double quotes."
+    raise SyntaxError
+    pass
+
 
 # Error rule for syntax errors
 def p_error(p):

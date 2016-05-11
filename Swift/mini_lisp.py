@@ -66,9 +66,9 @@ def eval(x, env=global_env):
         exp = (conseq if eval(test, env) else alt)
         return eval(exp, env)
     elif x[0] == 'let':
-        (_, key_val_list) = x
-        variable = x[0]
-        value = x[1]
+        (_, var_val_list) = x
+        variable = var_val_list[0]
+        value = var_val_list[1]
         assignmentDict[variable] = value
         print(assignmentDict)
     elif x[0] == 'concat':
@@ -157,7 +157,11 @@ class MiniLisp(cmd.Cmd):     # See https://docs.python.org/2/library/cmd.html
         """
         absSyntaxTree = parse(line)
         print "AST: ", absSyntaxTree
-        print "Evaluated: ", eval(absSyntaxTree)
+        if absSyntaxTree is not None:
+            for program in absSyntaxTree:
+                eval(program)
+
+        #print "Evaluated: ", eval(absSyntaxTree)
 
 
 if __name__ == '__main__':

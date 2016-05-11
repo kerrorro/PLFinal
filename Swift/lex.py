@@ -7,7 +7,7 @@
 import ply.lex as lex
 
 # List of token names.   
-tokens = ('LET', 'SWITCH', 'CASE','IDENTIFIER', 'PRINT' , 'STRING','DEFAULT','INTEGER',)
+tokens = ('LET', 'SWITCH', 'CASE','IDENTIFIER', 'PRINT' , 'STRING','DEFAULT','INTEGER', 'INVALIDSTRING')
 literals = ['=', ':', '{', '}','+',',','(',')','.','/','*','-']
 
 # Reserved words
@@ -15,6 +15,7 @@ reserved = ['LET', 'SWITCH', 'CASE','PRINT','DEFAULT']
 
 # Regular expression rules for simple tokens
 # t_SWITCH = r'switch'
+t_INVALIDSTRING = r'\'.*?\''
 t_STRING = r'\".*?\"'
 t_INTEGER = r'[0-9]+'
 
