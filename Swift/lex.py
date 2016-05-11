@@ -6,6 +6,8 @@
 
 import ply.lex as lex
 
+DEBUG = False
+
 # List of token names.   
 tokens = ('LET', 'SWITCH', 'CASE','IDENTIFIER', 'PRINT' , 'STRING','DEFAULT','INTEGER', 'INVALIDSTRING')
 literals = ['=', ':', '{', '}','+',',','(',')','.','/','*','-']
@@ -21,10 +23,10 @@ t_INTEGER = r'[0-9]+'
 
 def t_IDENTIFIER(t):
     r'[A-Za-z_][A-Za-z0-9_]*'
-    print ('In t_IDENTIFIER',t)
+    if DEBUG:
+        print ('In t_IDENTIFIER',t)
     if t.value.upper() in reserved: # if t in reserved, it changes to the reserved token type
         t.type = t.value.upper()                    # Any string that is not a reserved word
-        print ('In t_IDENTIFIER',t)
     return t
 
 # Define a rule so we can track line numbers

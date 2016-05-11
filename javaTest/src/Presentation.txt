@@ -1,0 +1,30 @@
+- Created a file called ObjectFactory
+- Object name is Employee
+- Within employee we have closure f and run
+- We run the closure f and assign it to run
+- The closure f has data and cf (our getter and setter)
+- data contains the datas of Employee object
+- cf act as getter and setter for data
+
+
+
+(exec 'import ObjectFactory;
+
+employee = ObjectFactory.Employee();
+
+employee.run("$firstName")("Fahran");
+
+employee.run("$lastName")("Kamili");
+
+employee.run("$title")("Software Engineer");
+
+toReturn = employee.run("firstName") +
+" " + employee.run("lastName") +
+", " + employee.run("title")')
+
+# TODO What to put in terminal
+(exec 'import ObjectFactory; employee = ObjectFactory.Employee(); employee.run("$firstName")("Fahran"); employee.run("$lastName")("Kamili"); employee.run("$title")("Software Engineer"); toReturn = employee.run("firstName") + " " + employee.run("lastName") + ", " + employee.run("title")')
+
+# TODO the AST
+['exec', '\'import ObjectFactory; employee = ObjectFactory.Employee(); employee.run("$firstName")("Fahran"); employee.run("$lastName")("Kamili"); employee.run("$title")("Software Engineer"); toReturn = employee.run("firstName") + " " + employee.run("lastName") + ", " + employee.run("title")\'']
+

@@ -12,6 +12,8 @@ Symbol = str          # A Lisp Symbol is implemented as a Python str
 List   = list         # A Lisp List is implemented as a Python list
 Number = (int, float) # A Lisp Number is implemented as a Python int or float
 
+DEBUG = False
+
 def standard_env():
     "An environment with some Scheme standard procedures."
     import math, operator as op
@@ -77,13 +79,14 @@ def eval(x, env=global_env):
 
         variable = var_val_list[0]
         value = eval(var_val_list[1],env)
-        print ('In let variable = ', variable )
-        print ('In let value = ', value)
+        if DEBUG:
+            print ('In let variable = ', variable )
+            print ('In let value = ', value)
         if variable in assignmentDict.keys():
             raise Exception("%s previously declared" % variable)
         else:
             assignmentDict[variable] = value
-            print(assignmentDict)
+            print("assignmentDict = ",assignmentDict)
     elif x[0] == 'print':
         arg = eval(x[1], env)
         print (arg)
@@ -91,10 +94,16 @@ def eval(x, env=global_env):
     elif x[0] == 'switch':
         identifier = eval(x[1])
         case_item_lists = x[2]
-        print ('In switch, x[2] = ', case_item_lists)
+
+        if DEBUG:
+            print ('In switch, case_item_lists = ', case_item_lists)
+
         for case_item_list in case_item_lists:
             case_label = case_item_list[0]
-            print ('In switch, case_label = ', case_label)
+
+            if DEBUG:
+                print ('In switch, case_label = ', case_label)
+
             statements = case_item_list[1]
             if identifier in case_label:
                 for statement in statements:
