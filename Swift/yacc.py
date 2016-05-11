@@ -21,7 +21,6 @@ def p_programs_base_case(p):
 
 def p_program(p):
     '''program : switch-statement
-               | constant-declaration
                | expression
                | statement
     '''
@@ -55,7 +54,7 @@ def p_default(p):
     p[0] = [[p[1]],p[3]]                               # [['Default'], statements] [['Default'], statements]
 
 def p_switch_case(p):
-    '''switch-case : CASE case-item-list ":" statement
+    '''switch-case : CASE case-item-list ":" statements
     '''
     if DEBUG:
         print ('In switch statement', [p[2]] + [p[4]])
@@ -83,12 +82,23 @@ def p_arithmetic(p):
                     | numeric-literal "*" numeric-literal
                     | numeric-literal "/" numeric-literal
     '''
-    p[0] = [p[2],[p[1],p[3]]]
+    p[0] = [p[2],p[1],p[3]]
 
-# TODO it wil have a bug in this switch x { case 5: print("Hello") case 6: print("World!") }
+def p_statements(p):
+    '''statements : statement statements'''
+    p[0] = [p[1]] + p[2]
+
+def p_statements_base_case(p):
+    'statements : statement'
+    p[0] = [p[1]]
+
 def p_print_function(p):
     'statement : PRINT "(" expression ")"'
     p[0] = [p[1] ,p[3]]
+
+def p_constant_declaration_statement(p):
+    'statement : constant-declaration'
+    p[0] = p[1]
 
 def p_constant_declaration(p):
     'constant-declaration : LET identifier-initializer'
@@ -123,7 +133,10 @@ def p_numeric_literal(p):
     '''
     if DEBUG:
         print ('In numeric literal', p[1:])
-    p[0] = p[1]
+    if "." not in p[1]:
+        p[0] = int(p[1])
+    else:
+        p[0] = float(p[1])
 
 def p_floating_point_literal(p):
     '''floating-point-literal : INTEGER "." INTEGER'''

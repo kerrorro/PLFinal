@@ -18,11 +18,10 @@ def standard_env():
     env = Env()
     env.update(vars(math)) # sin, cos, sqrt, pi, ...
     env.update({
-        '+':       lambda x,y: op.add,
-        '-':       lambda *x: x[0] - sum(x[1:]) if len(x)>1 else -x[0],
-        '*':       lambda *l: reduce(lambda x,y: x*y, l),
-        '/':       lambda *l: reduce(lambda x,y: x//y if x/y > 0 or x%y == 0 else x//y + 1, l) if 0 not in l[1:] else "Cannot divide by 0",
-        'exec':    lambda x: eval(compile(x,'None','single')),
+        '+':       op.add,
+        '-':       op.sub,
+        '*':       op.mul,
+        '/':       op.div,
     })
     return env
 
@@ -76,9 +75,12 @@ def eval(x, env=global_env):
     elif x[0] == 'let':
         (_, var_val_list) = x
         variable = var_val_list[0]
-        value = var_val_list[1]
-        assignmentDict[variable] = value
-        print(assignmentDict)
+        value = eval(var_val_list[1],env)
+        if variable in assignmentDict:
+            raise Exception("%s previously declared" % variable)
+        else:
+            assignmentDict[variable] = value
+            print(assignmentDict)
     elif x[0] == 'print':
         arg = eval(x[1], env)
         print (arg)
