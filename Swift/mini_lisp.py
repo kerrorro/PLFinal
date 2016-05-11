@@ -20,7 +20,7 @@ def standard_env():
     env = Env()
     env.update(vars(math)) # sin, cos, sqrt, pi, ...
     env.update({
-        '+':       op.add,
+        '+':       lambda x, y: x.rstrip('"') + " " + y.lstrip('"') if isinstance(x, str) and isinstance(y, str) else x + y,
         '-':       op.sub,
         '*':       op.mul,
         '/':       op.div,
