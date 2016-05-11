@@ -9,8 +9,8 @@ def p_programs(p):
     ''' programs : program programs
     '''
     if DEBUG:
-        print('In programs', p[1] + p[2])
-    p[0] = p[1] + p[2]
+        print('In programs', [p[1]] + p[2])
+    p[0] = [p[1]] + p[2]
 
 def p_programs_base_case(p):
     ''' programs : program
