@@ -54,8 +54,15 @@ def eval(x, env=global_env):
     if isinstance(x, Symbol) and (x in env):      # variable reference
         print("LOOK UP SYMBOL:", x, "RETURN FUNCTION",env.find(x)[x])
         return env.find(x)[x]
-    elif isinstance(x, Symbol) and x in assignmentDict.keys():
-        return assignmentDict[x]
+    elif isinstance(x, Symbol):
+        try:
+            if x in assignmentDict.keys():
+                return assignmentDict[x]
+            else:
+                raise Exception("use of unresolved identifier %s" % x)
+        except Exception as e:
+            raise e
+
     elif not isinstance(x, List):  # constant literal
         if isinstance(x, str):
             if x.lower() == 'false' or x == '#f':
