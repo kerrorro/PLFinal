@@ -15,7 +15,7 @@ reserved = ['LET', 'SWITCH', 'CASE','PRINT','DEFAULT']
 
 # Regular expression rules for simple tokens
 # t_SWITCH = r'switch'
-t_STRING = r'\".*\"'
+t_STRING = r'\".*?\"'
 t_INTEGER = r'[0-9]+'
 
 def t_IDENTIFIER(t):
@@ -32,7 +32,7 @@ def t_newline(t):
     t.lexer.lineno += len(t.value)
 
 # A string containing ignored characters (spaces and tabs)
-t_ignore  = ' \t'
+t_ignore  = ' \t\n'
 
 # Error handling rule
 def t_error(t):
