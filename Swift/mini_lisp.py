@@ -96,7 +96,6 @@ def eval(x, env=global_env):
     elif x[0] == 'switch':
         identifier = eval(x[1])
         case_item_lists = x[2]
-
         if DEBUG:
             print ('In switch, case_item_lists = ', case_item_lists)
 

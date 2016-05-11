@@ -80,7 +80,8 @@ switch vegetable
     case "celery":
         print("Add some raisins and make ants on a log.")
     case "cucumber", "watercress":
-        print("That would make a good tea sandwich.")
+        let people = 5*2
+        print("That would make a good tea sandwich. For " + String(people) + " people")
     case "red pepper":
         print("Is it a spicy?")
     default:
@@ -88,4 +89,20 @@ switch vegetable
 }
 
 TODO what to put in command line
-let vegetable = "default" switch vegetable { case "celery": print("Add some raisins and make ants on a log.") case "cucumber", "watercress": let people = 5 print("That would make a good tea sandwich.") case "red pepper": print("Is it a spicy?") default: print("Everything tastes good in soup.")}
+let vegetable = "watercress" switch vegetable { case "celery": print("Add some raisins and make ants on a log.") case "cucumber", "watercress": let people = 5*2 print("That would make a good tea sandwich. For " + String(people) + " people") case "red pepper": print("Is it a spicy?") default: print("Everything tastes good in soup.")}
+
+
+
+
+
+
+
+
+
+
+
+
+  /     /          /
+ LET   IDENTIFIER /     expression
+ /     /         /      /
+let vegetable   =  "red pepper"
