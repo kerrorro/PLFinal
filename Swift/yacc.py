@@ -32,8 +32,8 @@ def p_program(p):
 def p_switch_statement(p):
     '''switch-statement : SWITCH expression "{" switch-cases default "}"'''
     if DEBUG:
-        print ('In switch statement', [p[1],p[2],p[4],p[5]])
-    p[0] = [p[1],p[2],p[4],p[5]]
+        print ('In switch statement', [p[1],p[2],p[4] + [p[5]]] )
+    p[0] = [p[1],p[2],p[4] + [p[5]]]
 
 def p_switch_cases(p):
     '''switch-cases : switch-case switch-cases
@@ -51,8 +51,8 @@ def p_switch_cases_base_case(p):
 def p_default(p):
     'default : DEFAULT ":" statement'
     if DEBUG:
-        print('In default:', [[p[1]]] + p[3])
-    p[0] = [[p[1]]] + p[3]                                   # [['Default'], statements]
+        print('In default:', [[p[1]],p[3]])
+    p[0] = [[p[1]],p[3]]                               # [['Default'], statements] [['Default'], statements]
 
 def p_switch_case(p):
     '''switch-case : CASE case-item-list ":" statement

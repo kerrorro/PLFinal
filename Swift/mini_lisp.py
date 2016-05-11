@@ -54,7 +54,7 @@ def eval(x, env=global_env):
     if isinstance(x, Symbol) and (x in env):      # variable reference
         print("LOOK UP SYMBOL:", x, "RETURN FUNCTION",env.find(x)[x])
         return env.find(x)[x]
-    elif isinstance(x, Symbol):
+    elif isinstance(x, Symbol) and '"' not in x:
         try:
             if x in assignmentDict.keys():
                 return assignmentDict[x]
@@ -62,7 +62,6 @@ def eval(x, env=global_env):
                 raise Exception("use of unresolved identifier %s" % x)
         except Exception as e:
             raise e
-
     elif not isinstance(x, List):  # constant literal
         if isinstance(x, str):
             if x.lower() == 'false' or x == '#f':
@@ -84,6 +83,20 @@ def eval(x, env=global_env):
         arg = eval(x[1], env)
         print (arg)
         return(arg)
+    elif x[0] == 'switch':
+        identifier = eval(x[1])
+        case_item_lists = x[2]
+        print ('In switch, x[2] = ', case_item_lists)
+        for case_item_list in case_item_lists:
+            case_label = case_item_list[0]
+            print ('In switch, case_label = ', case_label)
+            statement = case_item_list[1]
+            if identifier in case_label:
+                eval(statement)
+                break
+            if 'default' == case_label[0]:
+                eval(statement)
+                break
     else:                          # (proc arg...)
         proc = eval(x[0], env)
         args = [eval(exp, env) for exp in x[1:]]
