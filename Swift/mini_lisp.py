@@ -54,6 +54,8 @@ def eval(x, env=global_env):
     if isinstance(x, Symbol) and (x in env):      # variable reference
         print("LOOK UP SYMBOL:", x, "RETURN FUNCTION",env.find(x)[x])
         return env.find(x)[x]
+    elif isinstance(x, Symbol) and x in assignmentDict.keys():
+        return assignmentDict[x]
     elif not isinstance(x, List):  # constant literal
         if isinstance(x, str):
             if x.lower() == 'false' or x == '#f':
@@ -71,51 +73,10 @@ def eval(x, env=global_env):
         value = var_val_list[1]
         assignmentDict[variable] = value
         print(assignmentDict)
-    elif x[0] == 'concat':
-        if isinstance(x[1], list):
-            listOfLists = []
-            for x in x[1:]:
-                x.remove("'")
-                listOfLists.append(x)
-        else:
-            proc = eval(x[0])
-            listOfLists = proc(x[1:])
-        proc = eval("reduceConcat")
-        return proc(*listOfLists)
-    elif x[0] == 'define':         # (define var exp)
-        (_, var, exp) = x
-        env[var] = eval(exp, env)
-    elif x[0] == 'set!':           # (set! var exp)
-        (_, var, exp) = x
-        env.find(var)[var] = eval(exp, env)
-    elif x[0] == 'lambda':         # (lambda (var...) body)
-        (_, parms, body) = x
-        return Procedure(parms, body, env)
     elif x[0] == 'print':
         arg = eval(x[1], env)
         print (arg)
         return(arg)
-    elif x[0] == 'exec':
-        proc = eval(x[0], env)
-        import re
-        print("CALLING EXEC WITH", x[1])
-        print(re.sub(r"^'|'$", '', x[1]))
-        exec(proc(re.sub(r"^'|'$", '', x[1])))
-        print("EXEC SUCCESSFULLY EXECUTED")
-        return toReturn
-    elif x[0] == 'ListCreator':
-        text = x[1:][0]
-        text = text.strip("'")
-        import ListCreator
-        list = ListCreator.listCreator(text)
-        return list
-    elif x[0] == 'StreamJava':
-        import re
-        #eval(['exec', "'import ListCreator; emp = ListCreator.listCreator('employees.txt'); dept = ListCreator.listCreator('department.txt'); import ListComprehension; ListComphrension.run(emp, dept)"]),
-        proc = eval('exec', env)
-        args = "'import ListCreator; emp = ListCreator.listCreator(\"employees.txt\"); dept = ListCreator.listCreator(\"department.txt\"); import ListComprehension; print emp; print dept; ListComprehension.run(emp, dept)"
-        exec(proc(re.sub(r"^'|'$", '', args)))
-        return toReturn
     else:                          # (proc arg...)
         proc = eval(x[0], env)
         args = [eval(exp, env) for exp in x[1:]]

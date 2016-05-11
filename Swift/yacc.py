@@ -73,7 +73,7 @@ def p_case_item_list(p):
         p[0] = [p[1],p[3]]
 
 def p_arithmetic(p):
-    ''' statement : numeric-literal "+" numeric-literal
+    ''' expression : numeric-literal "+" numeric-literal
                     | numeric-literal "-" numeric-literal
                     | numeric-literal "*" numeric-literal
                     | numeric-literal "/" numeric-literal
