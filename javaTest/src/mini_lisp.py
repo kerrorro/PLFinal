@@ -37,6 +37,7 @@ def standard_env():
         'length':  len,
         'list':    lambda *x: list(x),
         'list?':   lambda x: isinstance(x,list),
+        # ListComp performs SQL statement: SELECT dept_id, avg(salary) FROM emp GROUP BY dept_id
         'ListComp': lambda emp, dept: [[department,(lambda x: round(sum(x) / len(x), 2))(map(float, [e.getSalary() for e in emp[1::] if department == e.getDept_id()]))] for department in sorted({d.getId() for d in dept[1::]})],
         'map':     map,
         'max':     max,
@@ -155,19 +156,12 @@ def eval(x, env=global_env):
         exec(proc(re.sub(r"^'|'$", '', x[1])))
         print("EXEC SUCCESSFULLY EXECUTED")
         return toReturn
-    elif x[0] == 'ListCreator':
+    elif x[0] == 'ListFactory':
         text = x[1:][0]
         text = text.strip("'")
         import ListFactory
         list = ListFactory.build(text)
         return list
-    elif x[0] == 'StreamJava':
-        import re
-        #eval(['exec', "'import ListCreator; emp = ListCreator.listCreator('employees.txt'); dept = ListCreator.listCreator('departments.txt'); import ListComprehension; ListComphrension.run(emp, dept)"]),
-        proc = eval('exec', env)
-        args = "'import ListCreator; emp = ListCreator.listCreator(\"employees.txt\"); dept = ListCreator.listCreator(\"departments.txt\"); import ListComprehension; print emp; print dept; ListComprehension.run(emp, dept)"
-        exec(proc(re.sub(r"^'|'$", '', args)))
-        return toReturn
     else:                          # (proc arg...)
         proc = eval(x[0], env)
         args = [eval(exp, env) for exp in x[1:]]
