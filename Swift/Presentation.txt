@@ -31,7 +31,7 @@ toReturn = employee.run("firstName") +
 ", " + employee.run("title")') // getter
 
 TODO What to put in terminal
-(exec 'import ObjectFactory; employee = ObjectFactory.Employees(); employee.run("$firstName")("Fahran"); employee.run("$lastName")("Kamili"); employee.run("$title")("Software Engineer"); toReturn = employee.run("firstName") + " " + employee.run("lastName") + ", " + employee.run("title")')
+(exec 'import ObjectFactory; employee = ObjectFactory.Employee(); employee.run("$firstName")("Fahran"); employee.run("$lastName")("Kamili"); employee.run("$title")("Software Engineer"); toReturn = employee.run("firstName") + " " + employee.run("lastName") + ", " + employee.run("title")')
 
 TODO the AST
 ['exec', '\'import ObjectFactory; employee = ObjectFactory.Employee(); employee.run("$firstName")("Fahran"); employee.run("$lastName")("Kamili"); employee.run("$title")("Software Engineer"); toReturn = employee.run("firstName") + " " + employee.run("lastName") + ", " + employee.run("title")\'']
@@ -69,3 +69,23 @@ which you use to implement a function in mini-lisp.
 7. Using PLY, build a parser for a very small subset (one language feature)
 of the Swift language that uses the eval function of mini-lisp.
 
+- Explain the Tokens that we define in lex.py
+- Explain rules that we defined in yacc.py using tree drawn from example below
+- Don't forget to add arithmetic
+
+TODO Example of the Swift code
+let vegetable = "red pepper"
+switch vegetable
+{
+    case "celery":
+        print("Add some raisins and make ants on a log.")
+    case "cucumber", "watercress":
+        print("That would make a good tea sandwich.")
+    case "red pepper":
+        print("Is it a spicy?")
+    default:
+        print("Everything tastes good in soup.")
+}
+
+TODO what to put in command line
+let vegetable = "red pepper" switch vegetable { case "celery": print("Add some raisins and make ants on a log.") case "cucumber", "watercress": let people = 5 print("That would make a good tea sandwich.") case "red pepper": print("Is it a spicy?") default: print("Everything tastes good in soup.")}

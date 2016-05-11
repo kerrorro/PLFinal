@@ -158,14 +158,14 @@ def eval(x, env=global_env):
     elif x[0] == 'ListCreator':
         text = x[1:][0]
         text = text.strip("'")
-        import ListCreator
-        list = ListCreator.listCreator(text)
+        import ListFactory
+        list = ListFactory.build(text)
         return list
     elif x[0] == 'StreamJava':
         import re
-        #eval(['exec', "'import ListCreator; emp = ListCreator.listCreator('employees.txt'); dept = ListCreator.listCreator('department.txt'); import ListComprehension; ListComphrension.run(emp, dept)"]),
+        #eval(['exec', "'import ListCreator; emp = ListCreator.listCreator('employees.txt'); dept = ListCreator.listCreator('departments.txt'); import ListComprehension; ListComphrension.run(emp, dept)"]),
         proc = eval('exec', env)
-        args = "'import ListCreator; emp = ListCreator.listCreator(\"employees.txt\"); dept = ListCreator.listCreator(\"department.txt\"); import ListComprehension; print emp; print dept; ListComprehension.run(emp, dept)"
+        args = "'import ListCreator; emp = ListCreator.listCreator(\"employees.txt\"); dept = ListCreator.listCreator(\"departments.txt\"); import ListComprehension; print emp; print dept; ListComprehension.run(emp, dept)"
         exec(proc(re.sub(r"^'|'$", '', args)))
         return toReturn
     else:                          # (proc arg...)

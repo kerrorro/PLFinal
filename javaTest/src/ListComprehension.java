@@ -7,9 +7,6 @@ import java.util.stream.Collectors;
 
 
 public class ListComprehension {
-    public static void run(String e, String d){
-        System.out.println("HELLOOOOOOO");
-    }
     public static void run(Employee[] empArray, Department[] deptArray) throws IOException {
         System.out.println("Creating arraylists");
         ArrayList<Employee> emp = new ArrayList<>();
@@ -44,7 +41,7 @@ public class ListComprehension {
         }
 
 
-        br = new BufferedReader(new FileReader(path + "department.txt"));
+        br = new BufferedReader(new FileReader(path + "departments.txt"));
         while ((line = br.readLine()) != null){
             String a = line.substring(1, line.length() - 2);
             List<String> deptList = Arrays.asList(a.split(","));
