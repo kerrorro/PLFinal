@@ -7,7 +7,6 @@ DEBUG = True
 
 def p_programs(p):
     ''' programs : program programs
-                 | program
     '''
     if DEBUG:
         print('In programs', p[1] + p[2])
