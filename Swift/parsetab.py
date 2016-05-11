@@ -5,9 +5,9 @@ _tabversion = '3.8'
 
 _lr_method = 'LALR'
 
-_lr_signature = 'C9F4F46F33BE569F0150F5B85E8194AB'
+_lr_signature = 'AD6B4CB5D64635EB820FEAD1698B570D'
     
-_lr_action_items = {'PRINT':([29,31,],[32,32,]),'$end':([1,6,26,],[0,-1,-2,]),'(':([32,],[37,]),')':([11,12,13,14,15,23,42,],[-22,-18,-19,-20,-21,-23,47,]),'*':([11,15,23,33,],[-22,-21,-23,38,]),'+':([11,15,23,33,],[-22,-21,-23,39,]),',':([11,12,13,14,15,23,27,],[-22,-18,-19,-20,-21,-23,30,]),'-':([11,15,23,33,],[-22,-21,-23,40,]),'.':([15,],[18,]),'CASE':([11,15,17,19,23,24,34,36,43,44,45,46,47,],[-22,-21,21,21,-23,21,-7,-6,-12,-10,-11,-13,-14,]),'/':([11,15,23,33,],[-22,-21,-23,41,]),'STRING':([7,9,21,30,37,],[13,13,13,13,13,]),'LET':([0,],[2,]),'SWITCH':([3,4,8,11,12,13,14,15,16,23,],[7,-15,-16,-22,-18,-19,-20,-21,-17,-23,]),':':([11,12,13,14,15,22,23,27,28,35,],[-22,-18,-19,-20,-21,29,-23,-8,31,-9,]),'IDENTIFIER':([2,7,9,21,30,37,],[5,14,14,14,14,14,]),'{':([10,11,12,13,14,15,23,],[17,-22,-18,-19,-20,-21,-23,]),'=':([5,],[9,]),'}':([11,15,19,20,23,24,25,34,36,43,44,45,46,47,],[-22,-21,-5,26,-23,-4,-3,-7,-6,-12,-10,-11,-13,-14,]),'DEFAULT':([11,15,17,19,23,24,34,36,43,44,45,46,47,],[-22,-21,22,22,-23,22,-7,-6,-12,-10,-11,-13,-14,]),'INTEGER':([7,9,18,21,29,30,31,37,38,39,40,41,],[15,15,23,15,15,15,15,15,15,15,15,15,]),}
+_lr_action_items = {'PRINT':([0,2,3,4,5,6,7,8,9,10,14,23,26,27,28,29,30,32,34,38,44,45,47,51,],[1,-3,-28,-24,1,-5,-26,-27,-4,-25,-20,-21,-15,-13,-14,-16,-29,-22,-19,-23,-6,1,1,1,]),'$end':([2,3,4,5,6,7,8,9,10,13,14,20,23,26,27,28,29,30,32,34,38,44,],[-3,-28,-24,-2,-5,-26,-27,-4,-25,0,-20,-1,-21,-15,-13,-14,-16,-29,-22,-19,-23,-6,]),'(':([1,],[15,]),')':([3,4,7,8,10,25,26,27,28,29,30,],[-28,-24,-26,-27,-25,34,-15,-13,-14,-16,-29,]),'*':([3,4,8,30,],[-28,16,-27,-29,]),'+':([3,4,8,30,],[-28,17,-27,-29,]),',':([3,4,7,8,10,26,27,28,29,30,42,],[-28,-24,-26,-27,-25,-15,-13,-14,-16,-29,46,]),'-':([3,4,8,30,],[-28,18,-27,-29,]),'.':([8,],[21,]),'CASE':([3,4,7,8,10,14,23,26,27,28,29,30,31,32,34,35,38,50,51,52,],[-28,-24,-26,-27,-25,-20,-21,-15,-13,-14,-16,-29,37,-22,-19,37,-23,-10,-18,-17,]),'/':([3,4,8,30,],[-28,19,-27,-29,]),'STRING':([0,2,3,4,5,6,7,8,9,10,11,14,15,23,26,27,28,29,30,32,33,34,37,38,44,46,],[10,-3,-28,-24,10,-5,-26,-27,-4,-25,10,-20,10,-21,-15,-13,-14,-16,-29,-22,10,-19,10,-23,-6,10,]),'SWITCH':([0,2,3,4,5,6,7,8,9,10,14,23,26,27,28,29,30,32,34,38,44,],[11,-3,-28,-24,11,-5,-26,-27,-4,-25,-20,-21,-15,-13,-14,-16,-29,-22,-19,-23,-6,]),'LET':([0,2,3,4,5,6,7,8,9,10,14,23,26,27,28,29,30,32,34,38,44,45,47,51,],[12,-3,-28,-24,12,-5,-26,-27,-4,-25,-20,-21,-15,-13,-14,-16,-29,-22,-19,-23,-6,12,12,12,]),':':([3,4,7,8,10,26,27,28,29,30,41,42,43,49,],[-28,-24,-26,-27,-25,-15,-13,-14,-16,-29,45,-11,47,-12,]),'IDENTIFIER':([0,2,3,4,5,6,7,8,9,10,11,12,14,15,23,26,27,28,29,30,32,33,34,37,38,44,46,],[7,-3,-28,-24,7,-5,-26,-27,-4,-25,7,24,-20,7,-21,-15,-13,-14,-16,-29,-22,7,-19,7,-23,-6,7,]),'{':([3,4,7,8,10,22,26,27,28,29,30,],[-28,-24,-26,-27,-25,31,-15,-13,-14,-16,-29,]),'}':([3,4,7,8,10,14,23,26,27,28,29,30,32,34,38,40,48,],[-28,-24,-26,-27,-25,-20,-21,-15,-13,-14,-16,-29,-22,-19,-23,44,-9,]),'=':([24,],[33,]),'DEFAULT':([3,4,7,8,10,14,23,26,27,28,29,30,32,34,35,36,38,39,50,51,52,],[-28,-24,-26,-27,-25,-20,-21,-15,-13,-14,-16,-29,-22,-19,-8,41,-23,-7,-10,-18,-17,]),'INTEGER':([0,2,3,4,5,6,7,8,9,10,11,14,15,16,17,18,19,21,23,26,27,28,29,30,32,33,34,37,38,44,46,],[8,-3,-28,-24,8,-5,-26,-27,-4,-25,8,-20,8,8,8,8,8,30,-21,-15,-13,-14,-16,-29,-22,8,-19,8,-23,-6,8,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -16,7 +16,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'switch-statement':([3,],[6,]),'expression':([7,9,21,30,37,],[10,16,27,27,42,]),'floating-point-literal':([7,9,21,29,30,31,37,38,39,40,41,],[11,11,11,11,11,11,11,11,11,11,11,]),'numeric-literal':([7,9,21,29,30,31,37,38,39,40,41,],[12,12,12,33,12,33,12,43,44,45,46,]),'switch-case':([17,19,24,],[19,24,24,]),'case-item-list':([21,30,],[28,35,]),'initializer':([5,],[8,]),'switch-cases':([17,19,24,],[20,25,25,]),'identifier-initializer':([2,],[4,]),'godly':([0,],[1,]),'statement':([29,31,],[34,36,]),'constant-declaration':([0,],[3,]),}
+_lr_goto_items = {'switch-statement':([0,5,],[2,2,]),'expression':([0,5,11,15,33,37,46,],[9,9,22,25,38,42,42,]),'floating-point-literal':([0,5,11,15,16,17,18,19,33,37,46,],[3,3,3,3,3,3,3,3,3,3,3,]),'numeric-literal':([0,5,11,15,16,17,18,19,33,37,46,],[4,4,4,4,26,27,28,29,4,4,4,]),'switch-case':([31,35,],[35,35,]),'statements':([47,51,],[50,52,]),'program':([0,5,],[5,5,]),'case-item-list':([37,46,],[43,49,]),'initializer':([24,],[32,]),'switch-cases':([31,35,],[36,39,]),'default':([36,],[40,]),'identifier-initializer':([12,],[23,]),'statement':([0,5,45,47,51,],[6,6,48,51,51,]),'programs':([0,5,],[13,20,]),'constant-declaration':([0,5,45,47,51,],[14,14,14,14,14,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -25,28 +25,35 @@ for _k, _v in _lr_goto_items.items():
        _lr_goto[_x][_k] = _y
 del _lr_goto_items
 _lr_productions = [
-  ("S' -> godly","S'",1,None,None,None),
-  ('godly -> constant-declaration switch-statement','godly',2,'p_godly','yacc.py',14),
-  ('switch-statement -> SWITCH expression { switch-cases }','switch-statement',5,'p_switch_statement','yacc.py',18),
-  ('switch-cases -> switch-case switch-cases','switch-cases',2,'p_switch_cases','yacc.py',25),
-  ('switch-cases -> switch-case switch-case','switch-cases',2,'p_switch_cases','yacc.py',26),
-  ('switch-cases -> switch-case','switch-cases',1,'p_switch_case_single','yacc.py',32),
-  ('switch-case -> CASE case-item-list : statement','switch-case',4,'p_switch_case','yacc.py',38),
-  ('switch-case -> DEFAULT : statement','switch-case',3,'p_switch_case','yacc.py',39),
-  ('case-item-list -> expression','case-item-list',1,'p_case_item_list','yacc.py',48),
-  ('case-item-list -> expression , case-item-list','case-item-list',3,'p_case_item_list','yacc.py',49),
-  ('statement -> numeric-literal + numeric-literal','statement',3,'p_arithmetic','yacc.py',56),
-  ('statement -> numeric-literal - numeric-literal','statement',3,'p_arithmetic','yacc.py',57),
-  ('statement -> numeric-literal * numeric-literal','statement',3,'p_arithmetic','yacc.py',58),
-  ('statement -> numeric-literal / numeric-literal','statement',3,'p_arithmetic','yacc.py',59),
-  ('statement -> PRINT ( expression )','statement',4,'p_print_function','yacc.py',64),
-  ('constant-declaration -> LET identifier-initializer','constant-declaration',2,'p_constant_declaration','yacc.py',68),
-  ('identifier-initializer -> IDENTIFIER initializer','identifier-initializer',2,'p_identifier_initializer','yacc.py',74),
-  ('initializer -> = expression','initializer',2,'p_initializer','yacc.py',80),
-  ('expression -> numeric-literal','expression',1,'p_expression','yacc.py',86),
-  ('expression -> STRING','expression',1,'p_expression','yacc.py',87),
-  ('expression -> IDENTIFIER','expression',1,'p_expression','yacc.py',88),
-  ('numeric-literal -> INTEGER','numeric-literal',1,'p_numeric_literal','yacc.py',95),
-  ('numeric-literal -> floating-point-literal','numeric-literal',1,'p_numeric_literal','yacc.py',96),
-  ('floating-point-literal -> INTEGER . INTEGER','floating-point-literal',3,'p_floating_point_literal','yacc.py',103),
+  ("S' -> programs","S'",1,None,None,None),
+  ('programs -> program programs','programs',2,'p_programs','yacc.py',9),
+  ('programs -> program','programs',1,'p_programs_base_case','yacc.py',16),
+  ('program -> switch-statement','program',1,'p_program','yacc.py',23),
+  ('program -> expression','program',1,'p_program','yacc.py',24),
+  ('program -> statement','program',1,'p_program','yacc.py',25),
+  ('switch-statement -> SWITCH expression { switch-cases default }','switch-statement',6,'p_switch_statement','yacc.py',32),
+  ('switch-cases -> switch-case switch-cases','switch-cases',2,'p_switch_cases','yacc.py',38),
+  ('switch-cases -> switch-case','switch-cases',1,'p_switch_cases_base_case','yacc.py',45),
+  ('default -> DEFAULT : statement','default',3,'p_default','yacc.py',51),
+  ('switch-case -> CASE case-item-list : statements','switch-case',4,'p_switch_case','yacc.py',57),
+  ('case-item-list -> expression','case-item-list',1,'p_case_item_list','yacc.py',67),
+  ('case-item-list -> expression , case-item-list','case-item-list',3,'p_case_item_list','yacc.py',68),
+  ('expression -> numeric-literal + numeric-literal','expression',3,'p_arithmetic','yacc.py',80),
+  ('expression -> numeric-literal - numeric-literal','expression',3,'p_arithmetic','yacc.py',81),
+  ('expression -> numeric-literal * numeric-literal','expression',3,'p_arithmetic','yacc.py',82),
+  ('expression -> numeric-literal / numeric-literal','expression',3,'p_arithmetic','yacc.py',83),
+  ('statements -> statement statements','statements',2,'p_statements','yacc.py',88),
+  ('statements -> statement','statements',1,'p_statements_base_case','yacc.py',92),
+  ('statement -> PRINT ( expression )','statement',4,'p_print_function','yacc.py',96),
+  ('statement -> constant-declaration','statement',1,'p_constant_declaration_statement','yacc.py',100),
+  ('constant-declaration -> LET identifier-initializer','constant-declaration',2,'p_constant_declaration','yacc.py',104),
+  ('identifier-initializer -> IDENTIFIER initializer','identifier-initializer',2,'p_identifier_initializer','yacc.py',110),
+  ('initializer -> = expression','initializer',2,'p_initializer','yacc.py',116),
+  ('expression -> numeric-literal','expression',1,'p_expression','yacc.py',122),
+  ('expression -> STRING','expression',1,'p_expression','yacc.py',123),
+  ('expression -> IDENTIFIER','expression',1,'p_expression','yacc.py',124),
+  ('numeric-literal -> INTEGER','numeric-literal',1,'p_numeric_literal','yacc.py',131),
+  ('numeric-literal -> floating-point-literal','numeric-literal',1,'p_numeric_literal','yacc.py',132),
+  ('floating-point-literal -> INTEGER . INTEGER','floating-point-literal',3,'p_floating_point_literal','yacc.py',142),
+  ('invalid -> INVALIDSTRING','invalid',1,'p_invalid_string','yacc.py',148),
 ]

@@ -74,9 +74,12 @@ def eval(x, env=global_env):
         return eval(exp, env)
     elif x[0] == 'let':
         (_, var_val_list) = x
+
         variable = var_val_list[0]
         value = eval(var_val_list[1],env)
-        if variable in assignmentDict:
+        print ('In let variable = ', variable )
+        print ('In let value = ', value)
+        if variable in assignmentDict.keys():
             raise Exception("%s previously declared" % variable)
         else:
             assignmentDict[variable] = value
@@ -92,12 +95,14 @@ def eval(x, env=global_env):
         for case_item_list in case_item_lists:
             case_label = case_item_list[0]
             print ('In switch, case_label = ', case_label)
-            statement = case_item_list[1]
+            statements = case_item_list[1]
             if identifier in case_label:
-                eval(statement)
+                for statement in statements:
+                    eval(statement)
                 break
             if 'default' == case_label[0]:
-                eval(statement)
+                for statement in statements:
+                    eval(statement)
                 break
     else:                          # (proc arg...)
         proc = eval(x[0], env)
