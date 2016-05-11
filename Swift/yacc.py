@@ -7,12 +7,17 @@ DEBUG = True
 
 def p_programs(p):
     ''' programs : program programs
+                 | program
     '''
+    if DEBUG:
+        print('In programs', p[1] + p[2])
     p[0] = p[1] + p[2]
 
 def p_programs_base_case(p):
     ''' programs : program
     '''
+    if DEBUG:
+        print('In programs_base_case,',[p[1]])
     p[0] = [p[1]]
 
 def p_program(p):
@@ -23,36 +28,38 @@ def p_program(p):
     '''
     if DEBUG:
         print('In program', p[1])
-    p[0] = [p[1]]                           #
+    p[0] = p[1]                           #
 
 def p_switch_statement(p):
     '''switch-statement : SWITCH expression "{" switch-cases default "}"'''
     if DEBUG:
-        print ('In switch statement', p[1:])
+        print ('In switch statement', [p[1],p[2],p[4]])
     p[0] = [p[1],p[2],p[4]]
 
 def p_switch_cases(p):
     '''switch-cases : switch-case switch-cases
     '''
     if DEBUG:
-        print ('In switch-cases', p[1:])
+        print ('In switch-cases', [p[1]] + p[2])
     p[0] = [p[1]] + p[2]
 
 def p_switch_cases_base_case(p):
     'switch-cases : switch-case'
     if DEBUG:
-        print ('In switch-cases-end', p[1:])
+        print ('In switch-cases-end', [p[1]])
     p[0] = [p[1]]
 
 def p_default(p):
     'default : DEFAULT ":" statement'
+    if DEBUG:
+        print('In default:', [[p[1]]] + p[3])
     p[0] = [[p[1]]] + p[3]                                   # [['Default'], statements]
 
 def p_switch_case(p):
     '''switch-case : CASE case-item-list ":" statement
     '''
     if DEBUG:
-        print ('In switch statement', p[1:])
+        print ('In switch statement', [p[2]] + [p[4]])
     if p[1] == 'case':                                      # A list that contains the case and statement
         p[0] = [p[2]] + [p[4]]                              # [['C1', 'C2'], statement]
 

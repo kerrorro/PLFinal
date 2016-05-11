@@ -18,38 +18,10 @@ def standard_env():
     env = Env()
     env.update(vars(math)) # sin, cos, sqrt, pi, ...
     env.update({
-        '+':       lambda *x: sum(x),
+        '+':       lambda x,y: op.add,
         '-':       lambda *x: x[0] - sum(x[1:]) if len(x)>1 else -x[0],
         '*':       lambda *l: reduce(lambda x,y: x*y, l),
         '/':       lambda *l: reduce(lambda x,y: x//y if x/y > 0 or x%y == 0 else x//y + 1, l) if 0 not in l[1:] else "Cannot divide by 0",
-        '>':op.gt, '<':op.lt, '>=':op.ge, '<=':op.le, '=':op.eq,
-        'abs':     abs,
-        'append':  op.add,
-        'apply':   apply,
-        'and'  :   lambda *l: reduce(lambda x, y: x and y, l),
-        'begin':   lambda *x: x[-1],
-        'car':     lambda x: x[0],
-        'cdr':     lambda x: x[1:],
-        'cons':    lambda x,y: [x] + y,
-        'concat':  lambda l: map(lambda x: str(x).replace("'",""), l),
-        'eq?':     op.is_,
-        'equal?':  op.eq,
-        'length':  len,
-        'list':    lambda *x: list(x),
-        'list?':   lambda x: isinstance(x,list),
-        'ListComp': lambda emp, dept: [[department,(lambda x: round(sum(x) / len(x), 2))(map(float, [e.getSalary() for e in emp[1::] if department == e.getDept_id()]))] for department in sorted({d.getId() for d in dept[1::]})],
-        'map':     map,
-        'max':     max,
-        'min':     min,
-        'not':     op.not_,
-        'or':      lambda *l: reduce(lambda x,y: x or y, l),
-        'reduceConcat':  lambda *l: reduce(lambda x,y: x + y, l),
-        'null?':   lambda x: x == [],
-        'number?': lambda x: isinstance(x, Number),
-        'procedure?': callable,
-        'round':   round,
-        'symbol?': lambda x: isinstance(x, Symbol),
-        "'"   :    lambda *x: list(x),
         'exec':    lambda x: eval(compile(x,'None','single')),
     })
     return env
@@ -76,7 +48,7 @@ class Procedure(object):
 
 ################ eval
 toReturn = None
-
+assignmentDict = {}
 def eval(x, env=global_env):
     "Evaluate an expression in an environment."
     if isinstance(x, Symbol) and (x in env):      # variable reference
@@ -94,35 +66,11 @@ def eval(x, env=global_env):
         exp = (conseq if eval(test, env) else alt)
         return eval(exp, env)
     elif x[0] == 'let':
-        letDict = {}
-        assignCount = 0
-        functionPresent = False
-        for i in range(1, len(x)):
-            if x[i][0] not in env:
-                assignCount += 1
-                var = x[i][0]
-                val = x[i][1]
-                letDict[var] = val
-            else:
-                # Breaks assignment as soon as a known function is found in global env
-                functionPresent = True
-                break
-        if functionPresent:
-            exps = x[assignCount + 1 :]
-            #print("EXPRESSIONS:", exps)
-            expReturns = []
-            for exp in exps:
-                for key in letDict.keys():
-                    try:
-                        # Replace variable in expression with value stored in dict
-                        exp[exp.index(key)] = letDict[key]
-                    except ValueError:
-                        # If key is not in the expression, skip
-                        continue
-                expReturns.append(eval(exp,env))
-            return expReturns[-1]
-        else:
-            return letDict
+        (_, key_val_list) = x
+        variable = x[0]
+        value = x[1]
+        assignmentDict[variable] = value
+        print(assignmentDict)
     elif x[0] == 'concat':
         if isinstance(x[1], list):
             listOfLists = []
@@ -207,10 +155,9 @@ class MiniLisp(cmd.Cmd):     # See https://docs.python.org/2/library/cmd.html
         """Called on an input line when the command prefix is not recognized.
            In that case we execute the line as Python code.
         """
-        line = line.replace("\n", " ")
         absSyntaxTree = parse(line)
         print "AST: ", absSyntaxTree
-        #print "Evaluated: ", eval(absSyntaxTree)
+        print "Evaluated: ", eval(absSyntaxTree)
 
 
 if __name__ == '__main__':
